@@ -4,13 +4,12 @@
     <ul class="heroes">
       <li
         v-for="hero in heroes"
-        :key="hero.id"
-        :class="{selected: hero === selectedHero}"
-        @click="onSelect(hero)">
-        <span class="badge">{{ hero.id }}</span> {{ hero.name }}
+        :key="hero.id">
+        <nuxt-link :to="{ name: 'detail-id', params: { id: hero.id }}">
+          <span class="badge">{{ hero.id }}</span> {{ hero.name }}
+        </nuxt-link>
       </li>
     </ul>
-    <HeroDetail :hero="selectedHero" />
   </div>
 </template>
 
@@ -27,15 +26,9 @@ export default {
   },
   data: () => ({
     counter: 0,
-    selectedHero: null,
   }),
   computed: {
     ...mapGetters(['heroes']),
-  },
-  methods: {
-    onSelect: function(hero) {
-      this.selectedHero = hero;
-    },
   },
 };
 </script>

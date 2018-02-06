@@ -1,7 +1,10 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <Heroes />
+    <nav>
+      <nuxt-link to="/dashboard">Dashboard</nuxt-link>
+      <nuxt-link to="/heroes">Heroes</nuxt-link>
+    </nav>
   </div>
 </template>
 
@@ -14,6 +17,9 @@ export default {
   data: () => ({
     title: 'Tour of Heroes',
   }),
+  fetch ({store}) {
+    return store.dispatch('FETCH_HEROES');
+  },
 };
 </script>
 
