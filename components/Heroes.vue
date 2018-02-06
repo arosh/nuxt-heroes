@@ -2,8 +2,12 @@
   <div>
     <h2>My Heroes</h2>
     <ul class="heroes">
-      <li v-for="hero in heroes" :key="hero.id" @click="onSelect(hero)" :class="{selected: hero === selectedHero}">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      <li
+        v-for="hero in heroes"
+        :key="hero.id"
+        :class="{selected: hero === selectedHero}"
+        @click="onSelect(hero)">
+        <span class="badge">{{ hero.id }}</span> {{ hero.name }}
       </li>
     </ul>
     <HeroDetail :hero="selectedHero" />
@@ -18,15 +22,15 @@ export default {
   components: {
     HeroDetail,
   },
+  filters: {
+    uppercase: value => value.toUpperCase(),
+  },
   data: () => ({
     counter: 0,
     selectedHero: null,
   }),
   computed: {
     ...mapGetters(['heroes']),
-  },
-  filters: {
-    uppercase: value => value.toUpperCase(),
   },
   methods: {
     onSelect: function(hero) {
