@@ -18,7 +18,13 @@ export default {
     uppercase: value => value.toUpperCase(),
   },
   props: {
-    hero: Object,
+    hero: {
+      type: Object,
+      default: () => ({
+        id: 0,
+        name: '',
+      }),
+    }
   },
 };
 </script>
